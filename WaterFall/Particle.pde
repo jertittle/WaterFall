@@ -9,6 +9,7 @@ class Particle {
   PVector velocity;
   PVector acceleration;
   float lifespan;
+  float decay;
   float mass;
 
   Particle(PVector l) {
@@ -17,6 +18,7 @@ class Particle {
     velocity = new PVector(0,0);
     
     lifespan = random(100,255);
+    decay = .5 + random(1.);
     mass = 1;
     //ellipseMode(CENTER);
     
@@ -38,7 +40,7 @@ class Particle {
     velocity.add(acceleration);
     position.add(velocity);
     acceleration.mult(0);
-    lifespan -= 2.0;
+    lifespan -= decay;
   }
 
   // Method to display
