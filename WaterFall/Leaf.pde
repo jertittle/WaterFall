@@ -1,33 +1,32 @@
 class Leaf {
-  
- // PVector loc;
+
+  // PVector loc;
   float x, y, w, h;
-  
+
   float c;
-  
-  Leaf(){
-   
+
+  Leaf() {
   }
-  
+
   Leaf(float _x, float _y, float _w, float _h) {//this needs work
     w = _w;
     h = _h;
-    //loc = new PVector(x,y);
-   x = _x;
-   y = _y;
-    
-    c = random(0.,.5) ;
+    x = _x;
+    y = _y;
+
+    c = random(0., .6) ;
     //ellipseMode(CORNERS);
   }
-  
-   // Is the Mover in the Liquid?
+
+  // Is the Mover in the Liquid?
   boolean contains(Particle p) {
     PVector l = p.position;
-    return l.x > x && l.x < x + w && l.y > y && l.y < y + h;
+     return l.x > x && l.x < x + w && l.y > y && l.y < y + h;
   }
-  
-   // Calculate drag force
+
+  // Calculate drag force
   PVector drag(Particle p) {
+ 
     // Magnitude is coefficient * speed squared
     float speed = p.velocity.mag();
     float dragMagnitude = c * speed * speed;
@@ -43,16 +42,15 @@ class Leaf {
     return dragForce;
   }
 
-  
+
   void display() {
-    
-    //fill(0,255,20); 
+
+    //fill(0,255,20);
     //ellipseMode(CORNERS);
     //ellipse(x, y, w, h);
-    rectMode(CORNERS);
+  //  rectMode(CORNERS);
     noFill();
-    stroke(0,255,80);
-    rect(x,y,w,h);
+    stroke(0, 255, 80);
+    rect(x, y, w, h);
   }
-  
 }
